@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - </title>
+    <meta name="description" content="A beautiful, modern, multiplayer Rock Paper Scissors game. Play, challenge friends, and climb the leaderboard!">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✊</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="main-outer-container">
+        <header class="header">
+            <div class="logo" aria-label="Game Logo" tabindex="0">✊🖐✌️</div>
+            <h1 class="header-title">Rock Paper Scissors</h1>
+            <div class="header-actions">
+                <button id="theme-toggle" aria-label="Toggle theme" tabindex="0">🌙</button>
+                <button id="help-btn" aria-label="How to Play" tabindex="0">❓</button>
+            </div>
+        </header>
+        <main class="main-container">
+            <section class="main-section nickname-panel" aria-label="Set Nickname">
+                <label for="nickname-input">Nickname:</label>
+                <input id="nickname-input" type="text" maxlength="16" placeholder="Enter nickname" autocomplete="off" />
+                <button id="save-nickname-btn">Save</button>
+            </section>
+            <section class="main-section settings-panel">
+                <label for="best-of" class="settings-label">Best of:
+                    <select id="best-of" aria-label="Select best of N">
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                    </select>
+                </label>
+                <button id="reset" class="reset-btn" aria-label="Reset match">Reset</button>
+                <button id="share-btn" class="share-btn" aria-label="Share this game">🔗 Share</button>
+            </section>
+            <section class="main-section score-board" aria-label="Score Board">
+                <div class="score-card" id="user-score-card">
+                    <div class="player-label" id="nickname-label">You</div>
+                    <div class="score" id="user-score">0</div>
+                </div>
+                <div class="score-card" id="computer-score-card">
+                    <div class="player-label">Computer</div>
+                    <div class="score" id="computer-score">0</div>
+                </div>
+            </section>
+            <section class="main-section battle-area" aria-label="Battle Area">
+                <div class="choice-display">
+                    <div class="choice-label">Your Choice</div>
+                    <div class="choice-box" id="user-choice" aria-live="polite"></div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="choice-display">
+                    <div class="choice-label">Computer Choice</div>
+                    <div class="choice-box" id="computer-choice" aria-live="polite"></div>
+                </div>
+            </section>
+            <section class="main-section choices" aria-label="Choose your weapon">
+                <button class="choice-btn" id="rock" aria-label="Rock" tabindex="0">✊</button>
+                <button class="choice-btn" id="paper" aria-label="Paper" tabindex="0">🖐</button>
+                <button class="choice-btn" id="scissors" aria-label="Scissors" tabindex="0">✌️</button>
+            </section>
+            <div class="main-section result" id="result" aria-live="polite">Choose your weapon!</div>
+            <section class="main-section history-panel" aria-label="Match History">
+                <h2 class="section-title">Match History</h2>
+                <ul id="history-list" class="history-list"></ul>
+            </section>
+            <section class="main-section leaderboard-panel" aria-label="Leaderboard">
+                <h2 class="section-title">Leaderboard</h2>
+                <ul class="leaderboard-list" id="leaderboard-list"></ul>
+            </section>
+        </main>
+        <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none;">
+            <div class="modal-content">
+                <h2 id="modal-title"></h2>
+                <p id="modal-message"></p>
+                <button id="play-again-btn" class="modal-close-btn">Play Again</button>
+            </div>
+        </div>
+        <div id="help-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="help-title" style="display:none;">
+            <div class="modal-content">
+                <h2 id="help-title">How to Play</h2>
+                <ul class="help-list">
+                    <li>Choose Rock (✊), Paper (🖐), or Scissors (✌️) to play against the computer.</li>
+                    <li>First to win the majority in the selected "Best of" series wins the match.</li>
+                    <li>Track your match history and climb the leaderboard!</li>
+                    <li>Use the theme toggle for dark/light mode or try a new color theme.</li>
+                </ul>
+                <button id="help-close-btn" class="modal-close-btn">Close</button>
+            </div>
+        </div>
+        <audio id="audio-win" src="win.mp3" preload="auto"></audio>
+        <audio id="audio-lose" src="lose.mp3" preload="auto"></audio>
+        <audio id="audio-draw" src="draw.mp3" preload="auto"></audio>
+        <footer class="footer">
+            <span>© 2024 Rock Paper Scissors Next Gen &bull; <a href="#" id="about-link">About</a></span>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
